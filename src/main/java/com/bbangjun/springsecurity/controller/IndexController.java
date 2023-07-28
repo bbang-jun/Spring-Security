@@ -38,18 +38,12 @@ public class IndexController {
     }
 
     @GetMapping("/joinForm")
-    public @ResponseBody String joinForm() {
+    public String joinForm() {
         return "joinForm";
     }
 
-    @GetMapping("/joinProc")
-    public @ResponseBody String joinProc() {
-        return "회원가입 완료됨!";
-    }
-
-
-    @PostMapping("/temp")
-    public void temp(){
-
+    @GetMapping("/join")
+    public @ResponseBody String join() {
+        return "join";
     }
 }
