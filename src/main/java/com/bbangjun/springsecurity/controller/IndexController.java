@@ -42,8 +42,9 @@ public class IndexController {
         return "joinForm";
     }
 
-    @GetMapping("/join")
-    public @ResponseBody String join() {
+    @PostMapping("/join")
+    public @ResponseBody String join(User user) {
+        System.out.println(user);
         return "join";
     }
 }

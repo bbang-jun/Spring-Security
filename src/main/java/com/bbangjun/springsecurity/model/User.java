@@ -14,9 +14,9 @@ import java.sql.Timestamp;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String userName;
-    private String passWord;
+    private int id;
+    private String username;
+    private String password;
     private String email;
     private String role;
     @CreationTimestamp
