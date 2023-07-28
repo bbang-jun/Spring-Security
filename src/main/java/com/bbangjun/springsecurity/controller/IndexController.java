@@ -1,15 +1,17 @@
 package com.bbangjun.springsecurity.controller;
 
+import com.bbangjun.springsecurity.model.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
+@RequiredArgsConstructor
 public class IndexController {
-
     // localhost:8081/
-    // localhost:8080
+    // localhost:8081
     @GetMapping({ "", "/" })
     public String index(){
         return "index";
@@ -30,18 +32,24 @@ public class IndexController {
         return "manager";
     }
 
-    @GetMapping("/login")
-    public String login(){
+    @GetMapping("/loginForm")
+    public String loginForm(){
         return "loginForm";
     }
 
-    @GetMapping("/join")
-    public @ResponseBody String join() {
-        return "join";
+    @GetMapping("/joinForm")
+    public @ResponseBody String joinForm() {
+        return "joinForm";
     }
 
     @GetMapping("/joinProc")
     public @ResponseBody String joinProc() {
         return "회원가입 완료됨!";
+    }
+
+
+    @PostMapping("/temp")
+    public void temp(){
+
     }
 }
