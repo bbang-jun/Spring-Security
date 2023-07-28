@@ -13,5 +13,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
+        http.authorizeHttpRequests()
+                .antMatchers("/user/**").authenticated()
+                .antMatchers("/manager/**").hasAuthority("hasRole('ROLE_ADMIN') and hasRole('ROLE_MANAGER')")
+                .antMatchers("/admin/**").hasAuthority("hasRole('ROLE_ADMIN')")
+                .anyRequest().permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login");
+
+        return http.build();
     }
 }
