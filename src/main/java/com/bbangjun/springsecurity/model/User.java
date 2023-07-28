@@ -14,11 +14,11 @@ import java.sql.Timestamp;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String username;
     private String password;
     private String email;
     private String role;
-    @CreationTimestamp
-    private Timestamp createData;
+    @CreationTimestamp // @CreationTimestamp 어노테이션에 의해 시간이 자동 생성
+    private Timestamp createDate;
 }
