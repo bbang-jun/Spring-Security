@@ -17,11 +17,6 @@ spring:
     ansi:
       enabled: always
 
-mvc:
-  view:
-    prefix: /templates/
-    suffix: .mustache
-
 jpa:
   hibernate:
     ddl-auto: create #create update none
