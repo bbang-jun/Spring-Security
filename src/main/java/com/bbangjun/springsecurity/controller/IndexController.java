@@ -4,6 +4,7 @@ import com.bbangjun.springsecurity.model.User;
 import com.bbangjun.springsecurity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,5 +56,11 @@ public class IndexController {
         user.setPassword(encPassword);
         userRepository.save(user);
         return "redirect:/loginForm";
+    }
+
+    @Secured("ROLE_ADMIN") // 적용을 하기 위해서는 SecurityConfig에서 @EnableGlobalMethodSecurity 추가
+    @GetMapping("/info")
+    public @ResponseBody String info(){
+        return "개인정보";
     }
 }
