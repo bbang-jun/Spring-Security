@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // @Secured 활성화, @preAuthorize & @postAuthorize 활성화
 public class SecurityConfig {
 
     // @Bean 어노테이션에 의해 메서드에서 return되는 object를 ioc로 등록해줌
