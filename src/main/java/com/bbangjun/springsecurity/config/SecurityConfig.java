@@ -22,14 +22,14 @@ public class SecurityConfig {
         http.csrf().disable();
         http.authorizeHttpRequests()
                 .antMatchers("/user/**").authenticated()
-                .antMatchers("/manager/**").hasAuthority("hasRole('ROLE_ADMIN') and hasRole('ROLE_MANAGER')")
-                .antMatchers("/admin/**").hasAuthority("hasRole('ROLE_ADMIN')")
+                .antMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/loginForm")
                 .loginProcessingUrl("/login") // /login 주소가 호출이 되면 시큐리티가 낚아채서 대신 로그인 진행
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/"); // login 성공 시 /로 이동. 만약 로그인이 안된 상횡에서 /user로 이동했을 때 /loginForm으로 이동하여 로그인을 성공적으로 진행하게 되면 /user로 이동 시켜주는 기능이 적용되어 있음.
 
         return http.build();
     }
